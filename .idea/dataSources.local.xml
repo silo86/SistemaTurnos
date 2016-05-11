@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="MySQL - reclamos@localhost" uuid="1d0eaa32-321d-4089-b006-b71a1b5663de">
+      <secret-storage>master_key</secret-storage>
+      <user-name>root</user-name>
+      <schema-pattern>reclamos.*</schema-pattern>
+      <default-schemas>reclamos.*</default-schemas>
+    </data-source>
+  </component>
+</project>

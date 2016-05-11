@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - reclamos@localhost" uuid="1d0eaa32-321d-4089-b006-b71a1b5663de">
+    <database-info product="MySQL" version="5.6.20" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
+    <schema name="" catalog="reclamos"/>
+    <table name="areas" schema="" catalog="reclamos" type="TABLE">
+      <column name="AreaID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="Descripcion" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="Estado" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="AreaID"/>
+      <exported-key name="fk_Reclamos_Areas" table="reclamos" schema="" catalog="reclamos" columns="AreaID"/>
+    </table>
+    <table name="denunciantes" schema="" catalog="reclamos" type="TABLE">
+      <column name="DenuncianteID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="DNI" sqlType="VARCHAR" precision="16" scale="0" nullable="false" jdbcType="12"/>
+      <column name="NombreApellido" sqlType="VARCHAR" precision="64" scale="0" nullable="false" jdbcType="12"/>
+      <column name="Tipo" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="Direccion" sqlType="VARCHAR" precision="128" scale="0" nullable="false" jdbcType="12"/>
+      <column name="Telefono" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="Email" sqlType="VARCHAR" precision="64" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="DenuncianteID"/>
+      <exported-key name="fk_Reclamos_Denunciantes" table="reclamos" schema="" catalog="reclamos" columns="DenuncianteID"/>
+    </table>
+    <table name="reclamos" schema="" catalog="reclamos" type="TABLE">
+      <column name="ReclamoID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="DenuncianteID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="AreaID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="TramiteID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="Ubicacion" sqlType="VARCHAR" precision="128" scale="0" nullable="false" jdbcType="12"/>
+      <column name="Imagen" sqlType="VARCHAR" precision="128" scale="0" nullable="true" jdbcType="12"/>
+      <column name="Observaciones" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="Prioridad" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="FechaInicio" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="FechaFin" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="Estado" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="UsuarioID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="ReclamoID"/>
+      <foreign-key name="fk_Reclamos_Areas" columns="AreaID" ref-table="areas" ref-schema="" ref-catalog="reclamos" ref-columns="AreaID" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_Reclamos_Denunciantes" columns="DenuncianteID" ref-table="denunciantes" ref-schema="" ref-catalog="reclamos" ref-columns="DenuncianteID" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_Reclamos_Tramites" columns="TramiteID" ref-table="tramites" ref-schema="" ref-catalog="reclamos" ref-columns="TramiteID" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_Reclamos_Usuarios" columns="UsuarioID" ref-table="usuarios" ref-schema="" ref-catalog="reclamos" ref-columns="UsuarioID" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="fk_Reclamos_Areas_idx" unique="false" columns="AreaID"/>
+      <index name="fk_Reclamos_Denunciantes_idx" unique="false" columns="DenuncianteID"/>
+      <index name="fk_Reclamos_Tramites_idx" unique="false" columns="TramiteID"/>
+      <index name="fk_Reclamos_Usuarios_idx" unique="false" columns="UsuarioID"/>
+    </table>
+    <table name="tramites" schema="" catalog="reclamos" type="TABLE">
+      <column name="TramiteID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="Descripcion" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="Estado" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="TramiteID"/>
+      <exported-key name="fk_Reclamos_Tramites" table="reclamos" schema="" catalog="reclamos" columns="TramiteID"/>
+    </table>
+    <table name="usuarios" schema="" catalog="reclamos" type="TABLE">
+      <column name="UsuarioID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="Usuario" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="Clave" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="Email" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="Perfil" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="DNI" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="NombreApellido" sqlType="VARCHAR" precision="64" scale="0" nullable="false" jdbcType="12"/>
+      <column name="Domicilio" sqlType="VARCHAR" precision="128" scale="0" nullable="false" jdbcType="12"/>
+      <column name="Telefono" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="Celular" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="Estado" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="UsuarioID"/>
+      <exported-key name="fk_Reclamos_Usuarios" table="reclamos" schema="" catalog="reclamos" columns="UsuarioID"/>
+    </table>
+  </data-source>
+</component>

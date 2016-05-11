@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="reclamos">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.teal-green.min.css" />
+    <link rel="stylesheet" href="libs/material-design-lite/material.min.js">
+    <link rel="stylesheet" type="text/css" href="app/modules/reclamos/1-simple-calendar/tcal.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script type="text/javascript" src="app/modules/reclamos/1-simple-calendar/tcal.js"></script>
+</head>
+<body>
+<div ng-controller="reclamosController">
+    <input  type="text" ng-model="reclamo"/>
+<table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp" border="1" cellpadding="0" cellspacing="0" style="margin: 0 auto;">
+    <thead>
+    <tr>
+        <th>Tramite</th>
+        <th>Area</th>
+        <th>Prioridad</th>
+        <th>Estado</th>
+        <th>FechadeInicio</th>
+        <th>FechaFin</th>
+        <th>Reclamo</th>
+
+
+
+
+    </tr>
+    </thead>
+    <tbody>
+
+    <tr  ng-repeat = "reclamo in reclamos | filter: reclamo"  ng-show="show(reclamo)" >
+
+        <td>{{reclamo.Tramite}}</td>
+        <td>{{reclamo.Area}}</td>
+        <td>{{reclamo.Prioridad}}</td>
+        <td>{{reclamo.Estado}}</td>
+        <td>{{reclamo.FechaInicio}}</td>
+        <td>{{reclamo.FechaFin}}</td>
+        <td>{{reclamo.Observaciones}}</td>
+
+
+
+
+
+
+    </tr>
+    <!--          <td colspan="7">total: {{total| currency}}</td>
+              <br/>
+  -->
+
+
+    </tbody>
+</table>
+    <p>filtrar por area:</p>
+    <select  ng-model="localidad">
+        <option ng-repeat="reclamo in reclamos ">{{reclamo.Area}}</option>
+    </select>
+    <p>filtrar por tramite:</p>
+    <select  ng-model="Tramite">
+        <option ng-repeat="reclamo in reclamos ">{{reclamo.Tramite}}</option>
+    </select>
+    <p>filtrar por prioridad:</p>
+    <select  ng-model="Prioridad">
+        <option ng-repeat="reclamo in reclamos ">{{reclamo.Prioridad}}</option>
+    </select>
+    <p>filtrar por estado:</p>
+    <select  ng-model="Estado">
+        <option ng-repeat="reclamo in reclamos ">{{reclamo.Estado}}</option>
+    </select>
+
+    <p>filtrar por fecha:</p>
+    <form action="#">
+        <!-- add class="tcal" to your input field -->
+        <div><input   type="text" name="date" class="tcal" value="" ng-model="Fecha"/></div>
+    </form>
+    <button ng-click="quitarFiltros()" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect"/>quitar filtros</button>
+
+
+    <idear-select data="misoptions" ></idear-select>
+
+
+    <br/>
+
+
+    <idear-select data="misoptions" ></idear-select>
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<!--script src="libs/angular/angular.js"></script-->
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+<script src="app/modules/reclamos/reclamosViewController.js"></script>
+<link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.2/material.indigo-pink.min.css">
+<script src="https://storage.googleapis.com/code.getmdl.io/1.0.2/material.min.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+</body>
+</html>
